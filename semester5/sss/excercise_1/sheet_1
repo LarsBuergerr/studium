@@ -1,0 +1,152 @@
+OFragenkatalog Testat 1
+======================
+
+
+1. Welche elektrische Größe misst ein Drehspul-Messwerk?
+
+	Stromfluss -> indirekte magnetische Wirkung -> Strom(l)
+
+
+
+2. Wie funktioniert ein Drehspulinstrument?
+
+	Durch Stromfluss verhält sich die Spule wie ein Magnet.
+	Spule ist drehbar gelagert und direkt mit dem Zeiger verbunden.
+	Spiralfeder dient als Gegenkraft.
+	Jeder Stromwert führt zu einem eigenen Gleichgewichtszustand zw. der magnetischen und der Rückstellkraft
+
+
+
+3. Eine indirekte Messgröße A berechnet sich als Differenz zweier direkt gemessener 
+Eingangsgrößen B und C mit absolutem Messfehler ΔB bzw. ΔC, d.h. A = B - C. Wie groß 
+schätzen Sie den absoluten Messfehler ΔA?
+
+	deltaA = deltaB + deltaC
+
+
+
+4. Sie haben eine indirekt gemessene Größe A, die von mehreren Eingangsgrößen B, C, D, ... 
+abhängt, die alle den gleichen Messfehler haben. Welche der Eingangsgrößen hat den größten 
+Einfluss auf den Messfehler von A?
+
+	partielle Ableitung bilden und nachschauen welche der Eingangsgrößen am häufigsten vorkommt.
+	Fehlerfortpflanzung
+
+
+
+5. Was leistet die lineare Regression?
+
+	Sie ist eine alternative Methode zur Bestimmung der Übertragsfunktion.
+	Es wird angenommen, das die Übertragsfunktion linear ist.
+	Ziel ist es eine Ausgleichsgerade zu finden, die die Abstände zw. allen Messspulen minimiert.
+
+
+
+6. Kann man die lineare Regression auch bei Kennlinien anwenden, die einem Gesetz der Form
+y = x ^ a folgen?
+
+	Ja durch die doppelte Logarithmierung
+
+
+
+7. Sie haben in Python eine 5 x 5 - Matrix a angelegt. Wie greifen Sie auf das zweite 
+Element der dritten Zeile zu?
+
+	matrix[2][1]
+
+
+
+8. Ein Messintrument hat einen Anzeigefehler von 1% und einen Skalenendwert von 5 A. Im 
+Moment zeigt das Instrument einen Strom von 2 A an. In welchem Bereich liegt der wahre 
+Wert des Stroms?
+
+	2A +-0.05 (5 * 0.01)
+
+
+	
+9. Auf der Anzeige Ihres analogen Messinstrumentes steht "KL 1.5". Was bedeutet das?
+
+	Fehlerklasse
+	Es handelt sich hierbei um ein Betriebsmessgerät mit einem Anzeigefehler von 1.5% auf den Skalenendwert bezogen eine Standarttemperatur
+
+
+
+10. Wie schätzt man den wahren Wert einer Messgröße, wenn mehrere fehlerbehaftete 
+Messungen vorliegen?
+
+	der Fehler oder der wahre wert müssen geschätzt werde, überlicherweise durch mehrfache Messung.
+
+	
+
+11. Sie haben 20 Einzelmessungen mit einer Standardabweichung des Mittelwertes von s. Wie
+groß ist das Vertrauensintervall, in das der wahre Wert der Messgröße mit einer 
+Wahrscheinlichkeit von 95,5 % fällt?
+
+	+- sx gibt einen vertrauenbereich an in den 68% der arithmetischen Mittelwerte fallen. +- 2sx gibt den 95%
+	Bereich an sofern keine systematischen fehler vorliegen x(mittel) - x(wahr))
+	Wenn wenige Messwerte vorliegen(z.b n = 30) besteht die gefahr einer unterschätzung des fehlers da die schätzung von sx selbst fehlerbehaftet 
+	ist. Man korrigiert daher die fehlerschätzung um einen t nach oben, der von der Anzahl der Messungen und der gewünschten Sicheheit abhängt.
+	(x = x(mittel) +- t * sx
+
+
+
+12. Warum muss man jede Messung mit dem größten Messbereich beginnen?
+
+	Spule verträgt nicht viel strom und kann daher von zu großen strömen zerstört werden.
+
+
+
+13. Warum kann ein Drehspulinstrument nicht beliebig schnell veränderliche Ströme oder 
+Spannungen anzeigen?
+
+	Jede Zeigestellung ist ein Gleichgewichtszustand zw. Magnet und Rückstellkraft deswegen braucht das Gerät eine Gewisse Einschwingzeit pro
+	gemessene Größe.
+
+
+
+14. Was ist der Parallaxenfehler?
+
+	Je nach Blickwinkel liest man einen leicht unterschiedlichen Wert ab.
+
+
+
+15. Welches Messprinzip liegt dem im Praktikum eingesetzten Abstandssensor zugrunde?
+
+	Pysikalischer // Triangulationsprinzip.
+
+
+
+16. Zu was benützt man ein Oszilloskop?
+	
+	Um Signale und Schwingungen zu visualisieren => im Zeitbereich.
+	Mit dem Oszilloskop können zeitabhängige (insbesondere schnellveränderliche) Größen gemessen werden.
+
+
+
+17. Wie funktioniert ein analoges Oszilloskop?
+
+	Metall wird erhitzt.
+	Elektonen werden freigesetzt.
+	Durch Metallplatten wird der Elektronenstrahl abgelenkt.
+	x Ablenkung durch Sägezahnspannung.
+	Fluoriszierende Oberfäche macht das auftreffende Elektron sichtbar.
+
+
+
+18. Was ist der Unterschied zwischen einem Sensor und einem Messgerät?
+
+	Der Sensor ist ein Teil des Messgeräts oder einer Messeinrichtung, der auf eine Messgröße unmittelbar anspricht.
+
+
+
+19. Was für ein Sensortyp ist der im Praktikum eingesetzte Abstandssensor?
+
+	Aktiv, Extrinsisch - Auf begündung achten iwas mit differenz.
+
+	
+
+20. Wie funktioniert die Triggerung beim Oszilloskop?
+
+	Triggerung: Bei jedem Durchlauf wird die Ablenkung solange angehalten, bis das zu messende Signal einen definierten Spannungswert erreicht
+	hat. 
+	Dadurch werden die Perioden eines periodischen Signals stets genau übereinander gezeichet.
