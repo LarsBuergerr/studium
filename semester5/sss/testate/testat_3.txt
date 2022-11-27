@@ -1,0 +1,120 @@
+Fragenkatalog zu Testat 3
+==========================
+
+
+1. Wie verändert sich das Spektrums einer Rechteckschwingung mit fester Impulsdauer, bei
+der die Periode immer weiter erhöht wird?
+
+	Spektrum wird mit faktor 1/T immer kleiner.
+	Geht die Periodendauer gegen unendlich verschmelzen die einzelnen Linine yu einem durch
+	gehenden Spektrum.
+
+2. Was ist ein fastperiodisches Signal?
+
+	Signal welches aus unterschiedlichen Zeitabschnitten besteht in welchen das Signal allerdings
+	die gleiche Periode besitzt.
+	Besitzen Linienähnliche Spektren.
+
+3. Sie beobachten ein Spektrum aus mehreren Linien bei 100 Hz, 200 Hz, 270 Hz, 400 Hz und
+800 Hz. Um was für einen Signaltyp handelt es sich?
+
+	Ein Quasiperiodisches Signal (hat gleiche Perioden allerdings unterschiedliche Frequenzen)
+	Nicht lineares Signal.
+
+
+4. Welche Signale lassen sich als Fourierreihe darstellen?
+
+	Periodische Signale, mit einem diskreten Spektrum.
+
+
+5. Wie sieht das Spektrum eines einzelnen Rechteckimpulses aus?
+
+`	Ein Spektrum mit einer sehr hohen (unendlich hohen) Frequenz.
+	Gausche Kurve mit auslaufenden Schwingungen.
+
+6. Wie sieht die Fouriertransformierte des mit 2 skalierten Einheitsimpulses aus?
+
+	2
+
+7. Wie kann man am Besten die wechselnde Tonhöhe in der Aufnahme eines Solo-Musikstückes
+bestimmen?
+
+	Tonhöhe wird durch die Frequenz des Grundtons bestimmt.
+	Die Tonhöhe ist eindeutig bestimmbar. Die Tonhöhe wird durch die Frequenz des Grundtons bestimmt, die andere
+	Harmonischen sind die Obertöne.
+
+8. Sie zerlegen ein relativ glattes, periodisches Signal in mehrere Abschnitte und 
+bestimmen in jedem Abschnitt die lokale Fouriertransformation. Wie unterscheiden sich die
+lokalen Spektra vom Gesamtspektrum und warum?
+
+	Frequenzem In den lokalen Spektra sind deutlich höher als die des Gesamtspektrums.
+	Dies liegt nebeneffekt des Windowing bei dem durch die Teilung and den Enden der einzelnen Signalen 
+	starke sprünge entstehen.
+
+9. Was bedeutet die Komplementarität von Frequenz und Zeit?
+
+	Zeit und Frequenz sind komplementär zueinander. Wenn man die Länge eines Signals vergrößert verkleinert sich die Frequenz
+	und umgekehrt.
+	o(t) * o(f) = 1.
+	Geht nicht genauer -> Grenze der Physik 
+	Je eingeschränkter das Frequenzband ist desto größer muss die Signaldauer im umkehrschluss sein.
+	
+
+10. Wie berechnet man die Frequenzunschärfe eines Signals?
+
+ 	σt· σω ≥ 1 bzw. ∆t · ∆f ≥ 0.88
+
+11. Was besagt die Frequenz-Zeit-Unschärferelation?
+
+	kann nicht größer als 1 sein. ist in korreklation zu einander. Ist die Grenze der Physik.
+
+12. Bei welchem Signal ist das Produkt aus Zeit- und Frequenzunschärfe genau gleich 1?
+
+	Beim Gabor-Wavelet.
+
+13. Was ist der Unterschied zwischen der Fourierreihe und dem Spektrum eines periodischen
+Signals?
+
+	Die Fourierreihe kann nur auf nicht periodische Signale angewendet werden während man das Spektrum
+	eines periodischen Signals aus der Fouriertransformation ableitet.	
+
+14. Was ist die Ausblendeigenschaft des Dirac-Impulses?
+
+	Integral von -unendlich bis unendlich (δ(t) · f (t) dt) = f (0)
+
+15. Bei dem Spektrum eines Signals ist der Realteil gerade und der Imaginärteil ungerade.
+Um was für einen Signaltyp handelt es sich?
+
+	reeles Signal -> Fouriertransformierte ist symmetrisch zum Ursprung.
+
+16. Die Fouriertransformierte von f_1(t) sei F_1(ω), die Fouriertransformierte von f_2(t) 
+sei F_2(ω). Wie sieht die Fouriertransformierte von f(t) = 3 f_1(t) - 0.7 f_2(t) aus, und
+welche Eigenschaft macht man sich dabei zunutze?
+
+	3 F_1(w) - 0.7 F_2(w).
+	Linearitätseigenschaft wird sich hierbei zu nutze gemacht.
+
+17. Was passiert mit dem Spektrum eines Signals, wenn man es in zeitlicher Richtung 
+verschiebt?
+
+	f(t - a) -> e^-iwa * F(w)
+	Verschiebungssatz.
+	Betrag der Fouriertransformierten bleibt bei einer Versch. unverändert, nur die Phase ändert sich.
+
+18. Wie sieht das Spektrum eines Signals aus, das um den Faktor 2 im Zeitbereich gestreckt
+wird?
+
+	f(a * t) -> e-iwa * F(w)
+	Ähnlichkeitssatz.
+	Maßstabsänderung um Faktor a e R im Zeitbereich.
+	Spektrum wird enger und größer
+
+19. Was passiert mit dem Spektrum eines Signals, wenn man es mit einem konstanten
+Phasenfaktor mit dem Phasenwinkel a multipliziert?
+
+	nichts.
+
+20. Was ist das Gibbs-Phänomen?
+	
+	an Glatten abschnitten konvergiert Fourierreihe gleichmäßig zum Originalsignal.
+	Bei starken Sprüngen entstehen Ober und Unterschwingungen die nur mit unendlichen vielen Vielfachen weg gehen. (Gibbscher Schwingungen)
