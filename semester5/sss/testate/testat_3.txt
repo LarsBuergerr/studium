@@ -29,7 +29,7 @@ der die Periode immer weiter erhöht wird?
 
 5. Wie sieht das Spektrum eines einzelnen Rechteckimpulses aus?
 
-`	Ein Spektrum mit einer sehr hohen (unendlich hohen) Frequenz.
+ 	Ein Spektrum mit einer sehr hohen (unendlich hohen) Frequenz.
 	Gausche Kurve mit auslaufenden Schwingungen.
 
 6. Wie sieht die Fouriertransformierte des mit 2 skalierten Einheitsimpulses aus?

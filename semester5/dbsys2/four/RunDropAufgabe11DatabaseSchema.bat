@@ -1,0 +1,1 @@
+@call RunSample DropAufgabe11DatabaseSchema
