@@ -1,0 +1,16 @@
+# Policy binary files should be named as {GUID}.cip for multiple policy format files (where {GUID} = <PolicyId> from the Policy XML)
+$PolicyBinary = "<Path to policy binary file to deploy>"
+$DestinationFolder = $env:windir+"\System32\CodeIntegrity\CIPolicies\Active\"
+$RefreshPolicyTool = "<Path where RefreshPolicy.exe can be found from managed endpoints>"
+
+# Copy policy binary file to destination folder
+Copy-Item $PolicyBinary -Destination $DestinationFolder -Force
+
+# Refresh policy on managed endpoints
+Invoke-Command -ComputerName $ManagedEndpoints -ScriptBlock {& $RefreshPolicyTool}
+
+# Verify policy is deployed
+Get-ChildItem $DestinationFolder
+
+# Verify policy is enforced
+Get-ChildItem $DestinationFolder -Recurse | Get-FileHash
