@@ -24,7 +24,7 @@ der die Periode immer weiter erhöht wird?
 
 4. Welche Signale lassen sich als Fourierreihe darstellen?
 
-	Periodische Signale, mit einem diskreten Spektrum.
+	Periodische Signale, mit einem diskreten Spektrum. (die dirichlet bedingungen erfüllen)
 
 
 5. Wie sieht das Spektrum eines einzelnen Rechteckimpulses aus?
@@ -112,7 +112,7 @@ wird?
 19. Was passiert mit dem Spektrum eines Signals, wenn man es mit einem konstanten
 Phasenfaktor mit dem Phasenwinkel a multipliziert?
 
-	nichts.
+	nichts. (verschiebung auf der x-achse)
 
 20. Was ist das Gibbs-Phänomen?
 	
