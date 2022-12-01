@@ -29,22 +29,12 @@ public class Aufgabe1_e {
 		
         for (Map.Entry<String, Integer> entry : map.entrySet()) {
             System.out.println(entry.getKey() + ": " + entry.getValue());
-        }
-		// System.out.println("Listing Studiengang...");
-		// Studiengang[] studiengangs = Studiengang.listStudiengangByQuery(null, null);
-		// length = Math.min(studiengangs.length, ROW_COUNT);
-		// for (int i = 0; i < length; i++) {
-		// 	System.out.println(studiengangs[i]);
-		// }
-		// System.out.println(length + " record(s) retrieved.");
-		
+        }	
 	}
 	
 	public static void main(String[] args) {
 		try {
-            System.out.println("test before second try");
 			Aufgabe1_e listAufgabe11Data = new Aufgabe1_e();
-            System.out.println("test after second try");
 			try {
 				listAufgabe11Data.listTestData();
 
