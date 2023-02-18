@@ -4,7 +4,7 @@ select decode(grouping(k.age),1, 'alle', k.age) as Altersgruppe,
        sum(v.anzahl) as Summe
 from Verkauf v,  Kunde k, Produkt p
 where v.produktid = p.produktid and v.kundenid = k.kundenid
-and  extract(year from v.datum) = '2022'
+and  extract(year from v.datum) = '2023'
 group by cube(k.age, p.Produktgruppenname);
 
 DROP TABLE VERKAUF_2DC;
@@ -27,6 +27,7 @@ group by cube(k.age, p.Produktgruppenname)
 );
 --Aufgabe 1.3
 
+select * from verkauf_2DC;
 --Eigene Lösung
 select * from
     (select age, bezeichnung, anzahl from kunde, produkt, verkauf
@@ -80,7 +81,7 @@ FROM
 WHERE
     v.Verkaeuferid = vk.Verkaeuferid
 AND v.Produktid = p.Produktid
-GROUP BY ROLLUP(vk.Geburtsdatum, v.Datum, p.Produktgruppenname)
+GROUP BY ROLLUP(vk.Geburtsdatum, p.Produktgruppenname, v.Datum)
 ORDER BY UMSATZ DESC, AGE ASC;
 
 commit;

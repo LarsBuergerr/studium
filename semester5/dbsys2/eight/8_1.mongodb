@@ -1,0 +1,117 @@
+db.kunde.deleteMany({})
+db.auftrag.deleteMany({})
+db.auftrag.insertOne(
+    {"auftragsnummer": 1234,
+     "kosten": 6000,
+     "beschreibung": "Entwicklung Onlineshop",
+     "jahr": 2021});
+db.auftrag.insertOne(
+    {"auftragsnummer": 1217,
+     "kosten": 300,
+     "beschreibung": "Installation Webserver",
+     "jahr": 2020});
+db.auftrag.insertOne(
+    {"auftragsnummer": 1218,
+     "kosten": 500,
+     "beschreibung": "Cloud Integration",
+     "jahr": 2020});
+
+db.auftrag.insertOne(
+    {"auftragsnummer": 1222,
+     "kosten": 2000,
+     "beschreibung": "Optimierung Infrastruktur",
+     "jahr": 2021});
+
+db.auftrag.insertOne(
+    {"auftragsnummer": 1224,
+     "kosten": 3000,
+     "beschreibung": "Optimierung Infrastruktur",
+     "jahr": 2021});
+db.kunde.insertOne(
+    {"name": "Müller",
+     "adresse": "Obere Laube 10 78462 Konstanz",
+     "auftraege": [{
+         "kosten": 6000,
+         "details": new DBRef("auftrag", db.auftrag.findOne({
+             "auftragsnummer": 1234})._id)},
+         {
+             "kosten": 300,
+             "details": new DBRef("auftrag", db.auftrag.findOne({
+             "auftragsnummer": 1217})._id)}]});
+db.kunde.insertOne(
+    {"name": "Maier",
+     "adresse": "Seestrasse 10 78462 Konstanz",
+     "auftraege": [{
+         "kosten": 500,
+         "details": new DBRef("auftrag", db.auftrag.findOne({
+             "auftragsnummer": 1218})._id)
+     },
+         {
+             "kosten": 2000,
+             "details": new DBRef("auftrag", db.auftrag.findOne({
+             "auftragsnummer": 1222})._id)}]});
+db.kunde.insertOne(
+    {"name": "Kunz",
+     "adresse": "Seestrasse 1 78462 Konstanz",
+     "auftraege": [{
+         "kosten": 3000,
+         "details": new DBRef("auftrag", db.auftrag.findOne({
+             "auftragsnummer": 1224})._id)}]});
+
+
+// Aufgabe a
+db.auftrag.find({jahr: 2021,
+  $or: [{beschreibung: "Entwicklung Onlineshop"},
+        {beschreibung: "Installation Webserver"}]})
+
+// Aufgabe b
+db.auftrag.find({jahr: 2021},
+  {_id: 0, beschreibung: 1})
+
+// Aufgabe c
+db.kunde.find({
+  auftraege: {
+    $elemMatch: {
+      kosten: {$gte: 5000}
+    }
+  }
+  },
+  {_id: 0, name: 1})
+
+// Aufgabe d
+db.kunde.find({
+  "auftraege.details": DBRef("auftrag", db.auftrag.findOne({auftragsnummer: 1222})._id)
+},
+{_id: 0, name: 1})
+
+// Aufgabe e
+db.kunde.aggregate([
+  {$unwind: "$auftraege"},
+  {$group: {
+    _id: "$name",
+    summe: {$sum: "$auftraege.kosten"}
+  }}
+])
+
+// Aufgabe f
+db.auftrag.aggregate([
+  {$match: {beschreibung: "Entwicklung Onlineshop"}},
+  {$group: {
+    _id: "$jahr",
+    summe: {$sum: "$kosten"}
+  }},
+  {$sort: {summe: -1}},
+  {$limit: 1},
+  {$project: {summe: 1}}
+])
+
+// Aufgabe g
+db.auftrag.aggregate([
+  {$match: {jahr: 2021}},
+  {$group: {
+    _id: "$beschreibung",
+    summe: {$sum: "$kosten"}
+  }},
+  {$sort: {summe: -1}},
+  {$project: {summe: 1}}
+])

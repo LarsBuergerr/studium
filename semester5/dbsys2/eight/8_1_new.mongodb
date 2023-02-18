@@ -1,0 +1,77 @@
+db.kunde.deleteMany({})
+db.auftrag.deleteMany({})
+db.auftrag.insertOne(
+    {"auftragsnummer": 1234,
+     "kosten": 6000,
+     "beschreibung": "Entwicklung Onlineshop",
+     "jahr": 2021});
+db.auftrag.insertOne(
+    {"auftragsnummer": 1217,
+     "kosten": 300,
+     "beschreibung": "Installation Webserver",
+     "jahr": 2020});
+db.auftrag.insertOne(
+    {"auftragsnummer": 1218,
+     "kosten": 500,
+     "beschreibung": "Cloud Integration",
+     "jahr": 2020});
+
+db.auftrag.insertOne(
+    {"auftragsnummer": 1222,
+     "kosten": 2000,
+     "beschreibung": "Optimierung Infrastruktur",
+     "jahr": 2021});
+
+db.auftrag.insertOne(
+    {"auftragsnummer": 1224,
+     "kosten": 3000,
+     "beschreibung": "Optimierung Infrastruktur",
+     "jahr": 2021});
+  
+db.kunde.insertOne(
+    {"name": "Müller",
+     "adresse": "Obere Laube 10 78462 Konstanz",
+     "auftraege": [{
+         "kosten": 6000,
+         "details": new DBRef("auftrag", db.auftrag.findOne({
+             "auftragsnummer": 1234})._id)},
+         {
+             "kosten": 300,
+             "details": new DBRef("auftrag", db.auftrag.findOne({
+             "auftragsnummer": 1217})._id)}]});
+
+db.kunde.insertOne(
+    {"name": "Maier",
+     "adresse": "Seestrasse 10 78462 Konstanz",
+     "auftraege": [{
+         "kosten": 500,
+         "details": new DBRef("auftrag", db.auftrag.findOne({
+             "auftragsnummer": 1218})._id)
+     },
+         {
+             "kosten": 2000,
+             "details": new DBRef("auftrag", db.auftrag.findOne({
+             "auftragsnummer": 1222})._id)}]});
+db.kunde.insertOne(
+    {"name": "Kunz",
+     "adresse": "Seestrasse 1 78462 Konstanz",
+     "auftraege": [{
+         "kosten": 3000,
+         "details": new DBRef("auftrag", db.auftrag.findOne({
+             "auftragsnummer": 1224})._id)}]});
+
+
+db.auftrag.find({$or: [{beschreibung: 'Entwicklung Onlineshop'},
+                      {beschreibung: 'Installation Webserver'}], jahr: 2021})
+
+db.auftrag.find({jahr: 2021},
+                {beschreibung: 1, _id: 0})
+
+db.kunde.find(
+  {auftraege: {
+    $elemMatch: {
+      kosten: {$gte: 5000}
+    }
+  }},
+  {name: 1, _id: 0}
+)

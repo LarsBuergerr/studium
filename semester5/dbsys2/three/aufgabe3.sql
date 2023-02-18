@@ -24,14 +24,16 @@ CREATE OR REPLACE TYPE StudierenderT UNDER PersonT
 
 CREATE OR REPLACE TYPE BODY StudierenderT as
 MEMBER FUNCTION getNotenschnitt RETURN FLOAT is
-n_avg FLOAT;
+g FLOAT;
 BEGIN
-    select avg(p.note) INTO n_avg FROM PruefungsergebnisTab p where
-    p.studierender.matrikelnummer = self.matrikelnummer;
-    RETURN round(n_avg, 2);
-END getNotenschnitt;
+    select avg(p.note) into g 
+    from PruefungsergebnisTab p
+    where p.studierender.name = name;
+    return round(g, 2);
+    END;
 END;
 /
+    
 
 CREATE OR REPLACE TYPE VorlesungT AS OBJECT
 (name VARCHAR2(40),
@@ -97,7 +99,7 @@ INSERT INTO ProfessorTab VALUES(
   'Staehle',
   'TheoretischeInformatik',
   'O001');
------------------------------------------------Fakultäten
+-----------------------------------------------Fakultï¿½ten
 INSERT INTO FakultaetTab VALUES(
   'Informatik',
   (SELECT REF(p) FROM ProfessorTab p WHERE name = 'Langweg'),
@@ -184,4 +186,5 @@ INSERT INTO PruefungsergebnisTab VALUES(
     (SELECT REF(v) FROM VorlesungTab v WHERE name = 'Mathe2'),
     (SELECT REF(s) FROM StudierenderTab s WHERE matrikelnummer = '301810'),
     1.7);
+
 
